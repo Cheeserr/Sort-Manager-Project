@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SortManagerApp
 {
-    internal class BubbleSort : ISortable
+    public class BubbleSort : ISortable
     {
         public int[] Sort(int[] array)
         {
