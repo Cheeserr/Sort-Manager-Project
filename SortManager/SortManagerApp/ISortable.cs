@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SortManagerApp
 {
-    internal class ISortable
+    public interface ISortable
     {
+        int[] Sort(int[] array);
     }
 }
