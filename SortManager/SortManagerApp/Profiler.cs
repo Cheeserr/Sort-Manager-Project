@@ -18,7 +18,7 @@ namespace SortManagerApp
             _stopwatch = new Stopwatch();
         }
 
-        public T ProfileFunction<T>(Func<T> func)
+        public T ProfileFunctionInline<T>(Func<T> func)
         {
             _stopwatch.Reset();
             _stopwatch.Start();
@@ -26,7 +26,5 @@ namespace SortManagerApp
             _stopwatch.Stop();
             return result;
         }
-
-
     }
 }
