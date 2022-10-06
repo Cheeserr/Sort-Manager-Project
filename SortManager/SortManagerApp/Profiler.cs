@@ -4,7 +4,7 @@ namespace SortManagerApp
 {
     public class Profiler
     {
-        Stopwatch _stopwatch;
+        private Stopwatch _stopwatch;
         public double Milliseconds
         {
             get
