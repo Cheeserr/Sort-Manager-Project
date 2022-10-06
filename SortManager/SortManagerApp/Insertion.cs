@@ -10,6 +10,10 @@ namespace SortManagerApp
     {
         public int[] Sort(int[] array)
         {
+            if (array is null)
+            {
+                throw new ArgumentNullException();
+            }
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = i + 1; j > 0; j--)
