@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SortManagerApp
 {
-    internal class MergeSort : ISortable
+    public class MergeSort : ISortable
     {
         public int[] Sort(int[] array)
         {
