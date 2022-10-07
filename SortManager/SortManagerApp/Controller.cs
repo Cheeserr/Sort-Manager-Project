@@ -40,7 +40,7 @@ public class Controller : SortFactory
         maxRange = 100;
     }
 
-    public override ISortable ChooseSort(int choosenSort)
+    public static ISortable ChooseSort(int choosenSort)
     {
         switch (choosenSort)
         {
