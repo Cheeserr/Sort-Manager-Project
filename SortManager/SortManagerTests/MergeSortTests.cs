@@ -25,5 +25,12 @@ namespace SortManagerTests
             var actual = sorter.Sort(input);
             Assert.That(actual, Is.EqualTo(expected));
         }
+        [Test]
+        public void TestNullCaseThrowsexception()
+        {
+            int[] input = null!;
+            var sorter = new MergeSort();
+            Assert.That(() => sorter.Sort(input), Throws.TypeOf<ArgumentNullException>());
+        }
     }
 }

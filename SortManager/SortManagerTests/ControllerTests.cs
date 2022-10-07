@@ -10,6 +10,8 @@ namespace SortManagerTests
         [Test]
         public void Test1()
         {
+            Random rand = new Random((int)1);
+
             Assert.Pass();
         }
     }

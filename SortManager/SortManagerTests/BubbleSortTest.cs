@@ -25,4 +25,11 @@ internal class BubbleSortTest
         var actual = sorter.Sort(input);
         Assert.That(actual, Is.EqualTo(expected));
     }
+    [Test]
+    public void TestNullCaseThrowsexception()
+    {
+        int[] input = null!;
+        var sorter = new BubbleSort();
+        Assert.That(() => sorter.Sort(input), Throws.TypeOf<ArgumentNullException>());
+    }
 }
