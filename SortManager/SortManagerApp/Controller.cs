@@ -1,79 +1,78 @@
 ﻿using System.Drawing;
 using SortManagerModel;
 
-namespace SortManagerApp
+namespace SortManagerController;
+
+public class Controller
 {
-    public class Controller
+    ISortable? sortMethod = null;
+    int[] array;
+
+    private int _minRange;
+    private int _maxRange;
+    public int minRange
     {
-        ISortable? sortMethod = null;
-        int[] array;
-
-        private int _minRange;
-        private int _maxRange;
-        public int minRange
+        get
         {
-            get
+            return _minRange;
+        }
+        set
+        {
+            if (value < _maxRange)
             {
-                return _minRange;
-            }
-            set
-            {
-                if (value < _maxRange)
-                {
-                    _minRange = value;
-                }
+                _minRange = value;
             }
         }
-        public int maxRange
+    }
+    public int maxRange
+    {
+        get
         {
-            get
-            {
-                return _maxRange;
-            }
-            set
-            {
-                if (value > _minRange)
-                {
-                    _maxRange = value;
-                }
-            }
+            return _maxRange;
         }
-
-        public Controller()
+        set
         {
-            minRange = 0;
-            maxRange = 100;
-        }
-
-        void ChooseSort(int value, int sizeOfArray)
-        {
-            switch (value)
+            if (value > _minRange)
             {
-                case 0:
-                    sortMethod = new BubbleSort();
-                    break;
-                case 1:
-                    sortMethod = new MergeSort();
-                    break;
-                case 2:
-                    sortMethod = new SelectionSort();
-                    break;
-                default:
-                    break;
+                _maxRange = value;
             }
         }
+    }
 
-        int[] GenerateArray(int arraySize)
+    public Controller()
+    {
+        minRange = 0;
+        maxRange = 100;
+    }
+
+    void ChooseSort(int value, int sizeOfArray)
+    {
+        switch (value)
         {
-            Random random = new Random();
-            int[] output = new int[arraySize];
-
-            for (int i = 0; i < arraySize; i++)
-            {
-                output[i] = random.Next(minRange, maxRange);
-            }
-
-            return output;
+            case 0:
+                sortMethod = new BubbleSort();
+                break;
+            case 1:
+                sortMethod = new MergeSort();
+                break;
+            case 2:
+                sortMethod = new SelectionSort();
+                break;
+            default:
+                break;
         }
+    }
+
+    int[] GenerateArray(int arraySize)
+    {
+        Random random = new Random();
+        int[] output = new int[arraySize];
+
+        for (int i = 0; i < arraySize; i++)
+        {
+            output[i] = random.Next(minRange, maxRange);
+        }
+
+        return output;
     }
 }
