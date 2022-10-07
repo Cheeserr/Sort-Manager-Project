@@ -4,20 +4,18 @@ using SortManagerModel;
 
 namespace SortManagerController;
 
-public class Controller
+public class Controller : SortFactory
 {
     public Profiler profiler = new Profiler();
-    ISortable? sortMethod = null;
-    int[] array;
+    int[] array = { };
+
+    bool descending = false;
 
     private int _minRange;
     private int _maxRange;
     public int minRange
     {
-        get
-        {
-            return _minRange;
-        }
+        get  => _minRange;
         set
         {
             if (value < _maxRange)
@@ -28,10 +26,7 @@ public class Controller
     }
     public int maxRange
     {
-        get
-        {
-            return _maxRange;
-        }
+        get => maxRange;
         set
         {
             if (value > _minRange)
@@ -40,43 +35,32 @@ public class Controller
             }
         }
     }
-    public Controller(int arraySize)
+    
+    public Controller()
     {
         minRange = 0;
         maxRange = 100;
-
-        array = GenerateArray(arraySize);
     }
 
-    public void ChooseSort(int value)
+    public int Parse(string? choice, int minOption, int maxOption)
     {
-        switch (value)
+        if (choice is null) return -1;
+
+        if(Int32.TryParse(choice, out int num))
         {
-            case 0:
-                sortMethod = new BubbleSort();
-                break;
-            case 1:
-                sortMethod = new MergeSort();
-                break;
-            case 2:
-                sortMethod = new SelectionSort();
-                break;
-            case 3: sortMethod = new NetSort();
-                break;
-            case 4: sortMethod = new InsertionSort();
-                break;
-            default:
-                break;
+            if (num < minOption || num > maxOption)
+                return -1;
+
         }
+        return num;
     }
 
-    public int[] SortArray()
+    public void GenerateArray(int arraySize)
     {
-        return profiler.ProfileFunctionInline(() => sortMethod.Sort(array));
+        array = ArrayGenerator(arraySize);
     }
 
-
-    int[] GenerateArray(int arraySize)
+    int[] ArrayGenerator(int arraySize)
     {
         Random random = new Random();
         int[] output = new int[arraySize];
@@ -87,6 +71,11 @@ public class Controller
         }
 
         return output;
+    }
+
+    public void SortArray(int value)
+    {
+        array = profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(array));
     }
 
     public string ArrayToString()
