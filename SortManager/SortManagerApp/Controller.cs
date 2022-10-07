@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using SortManagerModel;
 
 namespace SortManagerApp
 {
@@ -9,27 +10,29 @@ namespace SortManagerApp
 
         private int _minRange;
         private int _maxRange;
-        public int minRange { 
-            get 
+        public int minRange
+        {
+            get
             {
                 return _minRange;
-            } 
-            set 
-            { 
-                if(value < _maxRange)
+            }
+            set
+            {
+                if (value < _maxRange)
                 {
                     _minRange = value;
                 }
             }
         }
-        public int maxRange {
-            get 
+        public int maxRange
+        {
+            get
             {
                 return _maxRange;
-            } 
+            }
             set
             {
-                if(value > _minRange)
+                if (value > _minRange)
                 {
                     _maxRange = value;
                 }
@@ -46,7 +49,8 @@ namespace SortManagerApp
         {
             switch (value)
             {
-                case 0: sortMethod = new BubbleSort();
+                case 0:
+                    sortMethod = new BubbleSort();
                     break;
                 case 1:
                     sortMethod = new MergeSort();
@@ -64,7 +68,7 @@ namespace SortManagerApp
             Random random = new Random();
             int[] output = new int[arraySize];
 
-            for(int i = 0; i < arraySize; i++)
+            for (int i = 0; i < arraySize; i++)
             {
                 output[i] = random.Next(minRange, maxRange);
             }

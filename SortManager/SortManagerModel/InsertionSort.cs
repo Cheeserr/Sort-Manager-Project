@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortManagerApp
+namespace SortManagerModel
 {
     internal class Insertion : ISortable
     {

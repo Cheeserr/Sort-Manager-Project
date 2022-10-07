@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SortManagerApp
+namespace SortManagerModel
 {
     public class BubbleSort : ISortable
     {
