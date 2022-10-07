@@ -6,6 +6,17 @@ namespace SortManagerController;
 
 public class Controller : SortFactory
 {
+    public enum Sorts
+    {
+        BubbleSort,
+        HeapSort,
+        InsertionSort,
+        MergeSort,
+        NetSort,
+        PancakeSort,
+        SelectionSort
+    }
+
     public Profiler profiler = new Profiler();
     int[] array = { };
 

@@ -6,17 +6,9 @@ namespace SortManagerView
     {
         public static void Main()
         {
-            Controller controller = new Controller();
+            var values = Enum.GetValues(typeof(Controller.Sorts));
 
-            controller.GenerateArray(10);
-
-            Console.WriteLine(controller.ArrayToString());
-
-            controller.SortArray(1);
-
-            Console.WriteLine(controller.ArrayToString());
-
-            Console.WriteLine(controller.profiler.ToString()); 
+            foreach (var value in values) Console.WriteLine(value);
         }
     }
 }
