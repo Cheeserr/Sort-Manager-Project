@@ -47,7 +47,7 @@ public class Controller : SortFactory
 
     public Controller() { }
 
-    public int Parse(string? choice)
+    public static int Parse(string? choice)
     {
         if (choice is null) return -1;
 
@@ -59,12 +59,7 @@ public class Controller : SortFactory
         return num;
     }
 
-    public void GenerateArray(int arraySize)
-    {
-        array = ArrayGenerator(arraySize);
-    }
-
-    int[] ArrayGenerator(int arraySize)
+    public void ArrayGenerator(int arraySize)
     {
         Random random = new Random();
         int[] output = new int[arraySize];
@@ -74,7 +69,7 @@ public class Controller : SortFactory
             output[i] = random.Next(minRange, maxRange);
         }
 
-        return output;
+        array = output;
     }
 
     public void SortArray(int value)
