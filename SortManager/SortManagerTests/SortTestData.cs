@@ -18,7 +18,7 @@ internal class SortTestData
     };
     public static object[] EmptArray =
     {
-        new int [][] {new int[] {}, new int[] {} }
+        new int [][] {new int[] {}, new int[] {} },
     };
     public static object[] NegandPosArrays =
     {
