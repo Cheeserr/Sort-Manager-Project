@@ -7,6 +7,41 @@ namespace SortManagerApp
         ISortable? sortMethod = null;
         int[] array;
 
+        private int _minRange;
+        private int _maxRange;
+        public int minRange { 
+            get 
+            {
+                return _minRange;
+            } 
+            set 
+            { 
+                if(value < _maxRange)
+                {
+                    _minRange = value;
+                }
+            }
+        }
+        public int maxRange {
+            get 
+            {
+                return _maxRange;
+            } 
+            set
+            {
+                if(value > _minRange)
+                {
+                    _maxRange = value;
+                }
+            }
+        }
+
+        public Controller()
+        {
+            minRange = 0;
+            maxRange = 100;
+        }
+
         void ChooseSort(int value, int sizeOfArray)
         {
             switch (value)
@@ -31,7 +66,7 @@ namespace SortManagerApp
 
             for(int i = 0; i < arraySize; i++)
             {
-                output[i] = random.Next(1, 100);
+                output[i] = random.Next(minRange, maxRange);
             }
 
             return output;
