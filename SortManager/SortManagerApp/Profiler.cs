@@ -7,10 +7,7 @@ public class Profiler
     private Stopwatch _stopwatch;
     public double Milliseconds
     {
-        get
-        {
-            return _stopwatch.Elapsed.TotalMilliseconds;
-        }
+        get => _stopwatch.Elapsed.TotalMilliseconds;
     }
 
     public Profiler()
@@ -25,5 +22,10 @@ public class Profiler
         var result = func.Invoke();
         _stopwatch.Stop();
         return result;
+    }
+
+    public override string ToString()
+    {
+        return $"{Milliseconds}ms";
     }
 }
