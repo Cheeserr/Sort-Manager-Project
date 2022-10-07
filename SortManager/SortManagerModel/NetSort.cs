@@ -1,4 +1,4 @@
-﻿namespace SortManagerApp
+﻿namespace SortManagerModel
 {
     public class NetSort : ISortable
     {
