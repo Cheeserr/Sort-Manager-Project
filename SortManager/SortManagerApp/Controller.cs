@@ -6,6 +6,17 @@ namespace SortManagerController;
 
 public class Controller : SortFactory
 {
+    public enum Sorts
+    {
+        BubbleSort,
+        HeapSort,
+        InsertionSort,
+        MergeSort,
+        NetSort,
+        PancakeSort,
+        SelectionSort
+    }
+
     public Profiler profiler = new Profiler();
     int[] array = { };
 
@@ -36,7 +47,7 @@ public class Controller : SortFactory
 
     public Controller() { }
 
-    public int Parse(string? choice, int minOption, int maxOption)
+    public int Parse(string? choice)
     {
         if (choice is null) return -1;
 
