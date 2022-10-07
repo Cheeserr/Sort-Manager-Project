@@ -1,10 +1,12 @@
 ﻿using System.Drawing;
+using System.Text;
 using SortManagerModel;
 
 namespace SortManagerController;
 
 public class Controller
 {
+    public Profiler profiler = new Profiler();
     ISortable? sortMethod = null;
     int[] array;
 
@@ -38,14 +40,15 @@ public class Controller
             }
         }
     }
-
-    public Controller()
+    public Controller(int arraySize)
     {
         minRange = 0;
         maxRange = 100;
+
+        array = GenerateArray(arraySize);
     }
 
-    void ChooseSort(int value, int sizeOfArray)
+    public void ChooseSort(int value)
     {
         switch (value)
         {
@@ -58,10 +61,20 @@ public class Controller
             case 2:
                 sortMethod = new SelectionSort();
                 break;
+            case 3: sortMethod = new NetSort();
+                break;
+            case 4: sortMethod = new InsertionSort();
+                break;
             default:
                 break;
         }
     }
+
+    public int[] SortArray()
+    {
+        return profiler.ProfileFunctionInline(() => sortMethod.Sort(array));
+    }
+
 
     int[] GenerateArray(int arraySize)
     {
@@ -74,5 +87,17 @@ public class Controller
         }
 
         return output;
+    }
+
+    public string ArrayToString()
+    {
+        StringBuilder sb = new StringBuilder("");
+
+        foreach(var element in array)
+        {
+            sb.Append(element.ToString() + " ");
+        }
+
+        return sb.ToString().Trim();
     }
 }
