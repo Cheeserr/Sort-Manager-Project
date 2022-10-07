@@ -1,21 +1,19 @@
 ﻿using System.Drawing;
+using System.Text;
 using SortManagerModel;
 
 namespace SortManagerController;
 
-public class Controller
+public class Controller : SortFactory
 {
-    ISortable? sortMethod = null;
+    public Profiler profiler = new Profiler();
     int[] array;
 
     private int _minRange;
     private int _maxRange;
     public int minRange
     {
-        get
-        {
-            return _minRange;
-        }
+        get  => _minRange;
         set
         {
             if (value < _maxRange)
@@ -26,10 +24,7 @@ public class Controller
     }
     public int maxRange
     {
-        get
-        {
-            return _maxRange;
-        }
+        get => maxRange;
         set
         {
             if (value > _minRange)
@@ -38,32 +33,32 @@ public class Controller
             }
         }
     }
-
+    
     public Controller()
     {
         minRange = 0;
         maxRange = 100;
     }
 
-    public void ChooseSort(int value, int sizeOfArray)
+    public override ISortable ChooseSort(int choosenSort)
     {
-        switch (value)
+        switch (choosenSort)
         {
-            case 0:
-                sortMethod = new BubbleSort();
-                break;
-            case 1:
-                sortMethod = new MergeSort();
-                break;
-            case 2:
-                sortMethod = new SelectionSort();
-                break;
-            default:
-                break;
+            case 0: return new BubbleSort();
+            case 1: return new MergeSort();
+            case 2: return new SelectionSort();
+            case 3: return new NetSort();
+            case 4: return new InsertionSort();
+            default: return new BubbleSort();
         }
     }
 
-    int[] GenerateArray(int arraySize)
+    public void GenerateArray(int arraySize)
+    {
+        array = ArrayGenerator(arraySize);
+    }
+
+    int[] ArrayGenerator(int arraySize)
     {
         Random random = new Random();
         int[] output = new int[arraySize];
@@ -74,5 +69,22 @@ public class Controller
         }
 
         return output;
+    }
+
+    public int[] SortArray(int value)
+    {
+        return profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(array));
+    }
+
+    public string ArrayToString()
+    {
+        StringBuilder sb = new StringBuilder("");
+
+        foreach(var element in array)
+        {
+            sb.Append(element.ToString() + " ");
+        }
+
+        return sb.ToString().Trim();
     }
 }
