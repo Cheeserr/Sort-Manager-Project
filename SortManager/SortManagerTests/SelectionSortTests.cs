@@ -30,4 +30,11 @@ internal class SelectionSortTests
         var actual = sorter.Sort(input);
         Assert.That(actual, Is.EqualTo(expected));
     }
+    [Test]
+    public void TestNullCaseThrowsexception()
+    {
+        int[] input = null!;
+        var sorter = new SelectionSort();
+        Assert.That(() => sorter.Sort(input), Throws.TypeOf<ArgumentNullException>());
+    }
 }
