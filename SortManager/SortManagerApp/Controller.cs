@@ -45,7 +45,7 @@ public class Controller
         maxRange = 100;
     }
 
-    void ChooseSort(int value, int sizeOfArray)
+    public void ChooseSort(int value, int sizeOfArray)
     {
         switch (value)
         {
@@ -58,12 +58,21 @@ public class Controller
             case 2:
                 sortMethod = new SelectionSort();
                 break;
+            case 3: sortMethod = new NetSort();
+                break;
+            case 4: sortMethod = new InsertionSort();
+                break;
             default:
                 break;
         }
     }
 
-    int[] GenerateArray(int arraySize)
+    public int[] SortArray()
+    {
+        return sortMethod.Sort(array);
+    }
+
+    public int[] GenerateArray(int arraySize)
     {
         Random random = new Random();
         int[] output = new int[arraySize];
