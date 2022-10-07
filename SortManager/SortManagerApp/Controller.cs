@@ -45,7 +45,7 @@ public class Controller
         maxRange = 100;
     }
 
-    void ChooseSort(int value, int sizeOfArray)
+    public void ChooseSort(int value, int sizeOfArray)
     {
         switch (value)
         {

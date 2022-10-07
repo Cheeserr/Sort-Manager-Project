@@ -1,45 +1,43 @@
-﻿namespace SortManagerView
+﻿using SortManagerController;
+
+namespace SortManagerView
 {
     internal class View
     {
+
         public static void Main()
         {
-            ChangeSortingAlgorithm(0, new int[] { 2, 1, -3, -4 });
+            // -- Starts here
+            // -- Selection of algorithms
+            // -- Start with bubble
+            // -- MainView
+            ViewMenu();
         }
 
-        public View()
+        private static void ViewMenu()
         {
+            Controller controller = new Controller();
+            var userInput = Console.ReadLine();
 
-        }
-
-        public static bool ChangeSortingAlgorithm(int option, int[] array)
-        {
-            switch (option)
+            while (userInput[0] != 'n')
             {
-                case 0:
-                    ViewResultOfBubbleSort(array);
-                    return true;
-                case 1:
-
-                    return true;
-                case 2:
-
-                    return true;
+                Console.WriteLine($"[Option][{userInput}]");
+                userInput = Console.ReadLine();
             }
-            return false;
-        }
 
-        public static void ViewResultOfBubbleSort(int[] array)
-        {
-            SortManagerModel.BubbleSort bubbleSort = new SortManagerModel.BubbleSort();
-            var result = bubbleSort.Sort(array);
-
-            Console.Write($"[");
-            for (int i = 0; i < array.Length; i++)
+            switch (userInput[0])
             {
-                Console.Write($"{result[i]}, ");
+                case '1':
+                    //controller.ChooseSort(0, array.Length);
+                    
+                    break;
+                case '2':
+                    
+                    break;
+                case '3':
+
+                    break;
             }
-            Console.Write($"]");
         }
     }
 }
