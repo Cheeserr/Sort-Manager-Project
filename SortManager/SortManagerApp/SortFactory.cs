@@ -2,7 +2,7 @@
 
 namespace SortManagerController
 {
-    public static class SortFactory
+    public class SortFactory
     {
         public static ISortable ChooseSort(int choosenSort)
         {

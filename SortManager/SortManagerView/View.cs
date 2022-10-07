@@ -4,40 +4,55 @@ namespace SortManagerView
 {
     internal class View
     {
-
         public static void Main()
         {
-            // -- Starts here
-            // -- Selection of algorithms
-            // -- Start with bubble
-            // -- MainView
             ViewMenu();
         }
 
-        private static void ViewMenu()
+        private static bool ViewMenu()
         {
             Controller controller = new Controller();
+
+            string menuOptions = $"[Option][1]\n[Option][2]\n[Option][3][Option][4][Option][5][Option][6]\n\nOption: ";
+            Console.Write(menuOptions);
+            
             var userInput = Console.ReadLine();
-
-            while (userInput[0] != 'n')
+            bool result = Int32.TryParse(userInput, out int intResult);
+            
+            while (result)
             {
-                Console.WriteLine($"[Option][{userInput}]");
-                userInput = Console.ReadLine();
-            }
+                if (!result) break;
+                Console.WriteLine($"\n[SelectedOption][{userInput}]");
 
-            switch (userInput[0])
+                //controller sort
+                Console.WriteLine($"[IsAvailable][{Sort(intResult)}]\n");
+
+                ViewMenu();
+                return true;
+            }
+            return false;
+        }
+
+        public static bool Sort(int chosenOption)
+        {
+            switch (chosenOption)
             {
-                case '1':
-                    //controller.ChooseSort(0, array.Length);
-                    
-                    break;
-                case '2':
-                    
-                    break;
-                case '3':
-
-                    break;
+                case 1:
+                    return true;
+                case 2:
+                    return true;
+                case 3:
+                    return true;
+                case 4:
+                    return true;
+                case 5:
+                    return true;
+                case 6:
+                    return true;
+                case 7:
+                    return true;
             }
+            return false;
         }
     }
 }
