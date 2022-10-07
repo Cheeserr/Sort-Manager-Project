@@ -1,4 +1,6 @@
-﻿namespace SortManagerView
+﻿using SortManagerController;
+
+namespace SortManagerView
 {
     internal class View
     {
