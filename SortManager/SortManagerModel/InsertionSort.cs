@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SortManagerModel
 {
-    public class Insertion : ISortable
+    public class InsertionSort : ISortable
     {
         public int[] Sort(int[] array)
         {
