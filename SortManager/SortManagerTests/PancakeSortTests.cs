@@ -23,5 +23,12 @@ internal class PancakeSortTests
         var actual = sorter.Sort(input);
         Assert.That(actual, Is.EqualTo(expected));
     }
+    [Test]
+    public void TestNullCaseThrowsexception()
+    {
+        int[] input = null!;
+        var sorter = new PancakeSort();
+        Assert.That(() => sorter.Sort(input), Throws.TypeOf<ArgumentNullException>());
+    }
 }
 
