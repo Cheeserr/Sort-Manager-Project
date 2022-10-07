@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-using System.Text;
-using SortManagerModel;
+﻿using System.Text;
 
 namespace SortManagerController;
 
@@ -17,14 +15,18 @@ public class Controller : SortFactory
         SelectionSort
     }
 
-    public Profiler profiler = new Profiler();
-    int[] array = { };
+    // TODO: We need to make this private (Feature creep). Would re
 
+    public Profiler profiler = new Profiler();
+    public string GetProfilerResult() => profiler.ToString();
+
+    int[] _array = { };
     private int _minRange = 0;
     private int _maxRange = 100;
-    public int minRange
+
+    public int MinRange
     {
-        get  => _minRange;
+        get => _minRange;
         set
         {
             if (value < _maxRange)
@@ -33,7 +35,7 @@ public class Controller : SortFactory
             }
         }
     }
-    public int maxRange
+    public int MaxRange
     {
         get => _maxRange;
         set
@@ -51,7 +53,7 @@ public class Controller : SortFactory
     {
         if (choice is null) return -1;
 
-        if(Int32.TryParse(choice, out int num))
+        if (Int32.TryParse(choice, out int num))
         {
             if (num < 1 || num > 7)
                 return -1;
@@ -61,7 +63,7 @@ public class Controller : SortFactory
 
     public void GenerateArray(int arraySize)
     {
-        array = ArrayGenerator(arraySize);
+        _array = ArrayGenerator(arraySize);
     }
 
     int[] ArrayGenerator(int arraySize)
@@ -71,7 +73,7 @@ public class Controller : SortFactory
 
         for (int i = 0; i < arraySize; i++)
         {
-            output[i] = random.Next(minRange, maxRange);
+            output[i] = random.Next(MinRange, MaxRange);
         }
 
         return output;
@@ -79,18 +81,20 @@ public class Controller : SortFactory
 
     public void SortArray(int value)
     {
-        array = profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(array));
+        _array = profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(_array));
     }
 
     public string ArrayToString()
     {
         StringBuilder sb = new StringBuilder("");
 
-        foreach(var element in array)
+        foreach (var element in _array)
         {
             sb.Append(element.ToString() + " ");
         }
 
         return sb.ToString().Trim();
     }
+
+
 }
