@@ -9,10 +9,8 @@ public class Controller : SortFactory
     public Profiler profiler = new Profiler();
     int[] array = { };
 
-    bool descending = false;
-
-    private int _minRange;
-    private int _maxRange;
+    private int _minRange = 0;
+    private int _maxRange = 100;
     public int minRange
     {
         get  => _minRange;
@@ -26,7 +24,7 @@ public class Controller : SortFactory
     }
     public int maxRange
     {
-        get => maxRange;
+        get => _maxRange;
         set
         {
             if (value > _minRange)
@@ -35,12 +33,8 @@ public class Controller : SortFactory
             }
         }
     }
-    
-    public Controller()
-    {
-        minRange = 0;
-        maxRange = 100;
-    }
+
+    public Controller() { }
 
     public int Parse(string? choice, int minOption, int maxOption)
     {
@@ -48,9 +42,8 @@ public class Controller : SortFactory
 
         if(Int32.TryParse(choice, out int num))
         {
-            if (num < minOption || num > maxOption)
+            if (num < 1 || num > 7)
                 return -1;
-
         }
         return num;
     }
