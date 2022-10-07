@@ -47,7 +47,7 @@ public class Controller : SortFactory
 
     public Controller() { }
 
-    public int Parse(string? choice, int minOption, int maxOption)
+    public int Parse(string? choice)
     {
         if (choice is null) return -1;
 

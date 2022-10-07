@@ -6,9 +6,7 @@ namespace SortManagerView
     {
         public static void Main()
         {
-            var values = Enum.GetValues(typeof(Controller.Sorts));
 
-            foreach (var value in values) Console.WriteLine(value);
         }
     }
 }
