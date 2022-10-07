@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SortManagerController;
 
-namespace SortManagerApp
+namespace SortManagerView
 {
     internal class View
     {
+
     }
 }
