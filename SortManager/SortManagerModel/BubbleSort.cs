@@ -11,6 +11,7 @@ namespace SortManagerModel
     {
         public int[] Sort(int[] array)
         {
+            if (array is null) throw new ArgumentNullException();
             int listSize = array.Length;
             while (listSize > 1)
             {

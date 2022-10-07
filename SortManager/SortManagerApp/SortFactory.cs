@@ -9,6 +9,17 @@ namespace SortManagerController
 {
     public abstract class SortFactory
     {
-        public abstract ISortable ChooseSort(int choosenSort);
+        public ISortable ChooseSort(int choosenSort)
+        {
+            switch (choosenSort)
+            {
+                case 0: return new BubbleSort();
+                case 1: return new MergeSort();
+                case 2: return new SelectionSort();
+                case 3: return new NetSort();
+                case 4: return new InsertionSort();
+                default: return new BubbleSort();
+            }
+        }
     }
 }

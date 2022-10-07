@@ -10,6 +10,7 @@ namespace SortManagerModel
     {
         public int[] Sort(int[] array)
         {
+            if (array is null) throw new ArgumentNullException();
             for (int i = 0; i < array.Length; i++)
             {
                 var min = i;
