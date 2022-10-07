@@ -10,7 +10,7 @@ defaults:
 jobs:
   tests:
     name: Unit Testing
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
