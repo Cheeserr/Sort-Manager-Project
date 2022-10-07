@@ -7,10 +7,10 @@ namespace SortManagerController;
 public class Controller : SortFactory
 {
     public Profiler profiler = new Profiler();
-    int[] array;
+    int[] array = { };
 
-    private int _minRange;
-    private int _maxRange;
+    private int _minRange = 0;
+    private int _maxRange = 100;
     public int minRange
     {
         get  => _minRange;
@@ -24,7 +24,7 @@ public class Controller : SortFactory
     }
     public int maxRange
     {
-        get => maxRange;
+        get => _maxRange;
         set
         {
             if (value > _minRange)
@@ -33,24 +33,19 @@ public class Controller : SortFactory
             }
         }
     }
-    
-    public Controller()
-    {
-        minRange = 0;
-        maxRange = 100;
-    }
 
-    public override ISortable ChooseSort(int choosenSort)
+    public Controller() { }
+
+    public int Parse(string? choice, int minOption, int maxOption)
     {
-        switch (choosenSort)
+        if (choice is null) return -1;
+
+        if(Int32.TryParse(choice, out int num))
         {
-            case 0: return new BubbleSort();
-            case 1: return new MergeSort();
-            case 2: return new SelectionSort();
-            case 3: return new NetSort();
-            case 4: return new InsertionSort();
-            default: return new BubbleSort();
+            if (num < 1 || num > 7)
+                return -1;
         }
+        return num;
     }
 
     public void GenerateArray(int arraySize)
@@ -71,9 +66,9 @@ public class Controller : SortFactory
         return output;
     }
 
-    public int[] SortArray(int value)
+    public void SortArray(int value)
     {
-        return profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(array));
+        array = profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(array));
     }
 
     public string ArrayToString()
