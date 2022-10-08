@@ -33,5 +33,10 @@ namespace SortManagerWPF
             controller.SortArray(algorithmSelectionBox.SelectedIndex);
             MessageBox.Show($"Sort took {controller.GetProfilerResult()}", "Sort Manager Results");
         }
+        private void aboutButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("A Simple WPF GUI for Sort Manager\nBy Adam, Connor, Lewis, Sergiusz and Tudor", "Sort Manager");
+        }
+
     }
 }
