@@ -17,7 +17,7 @@ public class Controller : SortFactory
 
     // TODO: We need to make this private (Feature creep). Would re
 
-    public Profiler profiler = new Profiler();
+    private Profiler profiler = new Profiler();
     public string GetProfilerResult() => profiler.ToString();
 
     int[] _array = { };
@@ -61,6 +61,7 @@ public class Controller : SortFactory
         return -1;
     }
 
+
     public void ArrayGenerator(int arraySize)
     {
         Random random = new Random();
@@ -71,7 +72,7 @@ public class Controller : SortFactory
             output[i] = random.Next(MinRange, MaxRange);
         }
 
-        array = output;
+        _array = output;
     }
 
     public void SortArray(int value)

@@ -70,7 +70,7 @@ internal class View
         Console.WriteLine("\nSorted array: ");
         Console.WriteLine(controller.ArrayToString());
 
-        Console.WriteLine($"\n Time it took: {controller.profiler.ToString()} \n");
+        Console.WriteLine($"\n Time it took: {controller.GetProfilerResult()} \n");
         Console.WriteLine("\n Press any key do continue...");
 
 
