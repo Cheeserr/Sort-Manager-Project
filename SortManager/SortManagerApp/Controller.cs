@@ -17,13 +17,12 @@ public class Controller : SortFactory
 
     // TODO: We need to make this private (Feature creep). Would re
 
-    public Profiler profiler = new Profiler();
+    private Profiler profiler = new Profiler();
     public string GetProfilerResult() => profiler.ToString();
 
     int[] _array = { };
     private int _minRange = 0;
     private int _maxRange = 100;
-
     public int MinRange
     {
         get => _minRange;
@@ -49,24 +48,21 @@ public class Controller : SortFactory
 
     public Controller() { }
 
-    public int Parse(string? choice)
+    public static int Parse(string? choice)
     {
-        if (choice is null) return -1;
+        if (choice is null || choice.Trim() is "") return -1;
 
         if (Int32.TryParse(choice, out int num))
         {
             if (num < 1 || num > 7)
                 return -1;
+            return num;
         }
-        return num;
+        return -1;
     }
 
-    public void GenerateArray(int arraySize)
-    {
-        _array = ArrayGenerator(arraySize);
-    }
 
-    int[] ArrayGenerator(int arraySize)
+    public void ArrayGenerator(int arraySize)
     {
         Random random = new Random();
         int[] output = new int[arraySize];
@@ -76,7 +72,7 @@ public class Controller : SortFactory
             output[i] = random.Next(MinRange, MaxRange);
         }
 
-        return output;
+        _array = output;
     }
 
     public void SortArray(int value)

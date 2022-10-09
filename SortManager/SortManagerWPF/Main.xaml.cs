@@ -38,10 +38,11 @@ namespace SortManagerWPF
             if (arraySize < 0) throw new ArgumentException("arraySize must be a positive number");
 
             Controller controller = new Controller();
+
             controller.MinRange = -1000;
             controller.MinRange = 1000;
 
-            controller.GenerateArray(arraySize);
+            controller.ArrayGenerator(arraySize);
             var unsorted = controller.ArrayToString();
 
             //TODO: Maybe speak with others about refactoring this to an enum value instead of an int
