@@ -29,7 +29,7 @@ namespace SortManagerWPF
         private void sortArrayButton_Click(object sender, RoutedEventArgs e)
         {
             Controller controller = new Controller();
-            controller.GenerateArray(Convert.ToInt32(arraySizeBox.Text));
+            controller.ArrayGenerator(Convert.ToInt32(arraySizeBox.Text));
             controller.SortArray(algorithmSelectionBox.SelectedIndex);
             MessageBox.Show($"Sort took {controller.GetProfilerResult()}", "Sort Manager Results");
         }
