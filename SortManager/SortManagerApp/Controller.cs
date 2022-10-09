@@ -22,7 +22,7 @@ public class Controller : SortFactory
 
     private int _minRange = 0;
     private int _maxRange = 100;
-    public int minRange
+    public int MinRange
     {
         get  => _minRange;
         set
@@ -33,7 +33,7 @@ public class Controller : SortFactory
             }
         }
     }
-    public int maxRange
+    public int MaxRange
     {
         get => _maxRange;
         set
@@ -49,14 +49,15 @@ public class Controller : SortFactory
 
     public static int Parse(string? choice)
     {
-        if (choice is null) return -1;
+        if (choice is null || choice.Trim() is "") return -1;
 
         if(Int32.TryParse(choice, out int num))
         {
             if (num < 1 || num > 7)
                 return -1;
+            return num;
         }
-        return num;
+        return -1;
     }
 
     public void ArrayGenerator(int arraySize)
@@ -66,7 +67,7 @@ public class Controller : SortFactory
 
         for (int i = 0; i < arraySize; i++)
         {
-            output[i] = random.Next(minRange, maxRange);
+            output[i] = random.Next(MinRange, MaxRange);
         }
 
         array = output;
