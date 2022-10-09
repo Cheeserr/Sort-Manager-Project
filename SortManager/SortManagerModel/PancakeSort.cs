@@ -32,6 +32,7 @@
 
         public int[] Sort(int[] array)
         {
+            if (array is null) throw new ArgumentNullException();
             int arrayLength = array.Length;
 
             // reverse-iterate the array
