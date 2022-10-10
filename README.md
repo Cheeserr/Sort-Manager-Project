@@ -1,5 +1,8 @@
 # **Sort Manager Project**
 
+[![Coverage Status](https://coveralls.io/repos/github/Cheeserr/BestGroupSortManagerProject/badge.svg?branch=main)](https://coveralls.io/github/Cheeserr/BestGroupSortManagerProject?branch=main)
+[![Unit Testing](https://github.com/Cheeserr/BestGroupSortManagerProject/actions/workflows/SortManagerTests.yaml/badge.svg)](https://github.com/Cheeserr/BestGroupSortManagerProject/actions/workflows/SortManagerTests.yaml)
+
  _Participants:_
  - Sergiusz (Scrum Master)
  - Tudor
