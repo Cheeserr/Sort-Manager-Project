@@ -18,6 +18,9 @@ namespace SortManagerController
                 case 2: return new SelectionSort();
                 case 3: return new NetSort();
                 case 4: return new InsertionSort();
+                case 5: return new NetSort();
+                case 6: return new PancakeSort();
+                case 7: return new SelectionSort();
                 default: return new BubbleSort();
             }
         }
