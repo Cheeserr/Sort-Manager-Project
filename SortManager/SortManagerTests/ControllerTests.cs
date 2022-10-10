@@ -4,6 +4,15 @@ namespace SortManagerTests;
 
 internal class ControllerTests
 {
+
+    [Test]
+    public void ControllerInitializedIsOfTypeController()
+    {
+        Controller controller = new Controller();
+
+        Assert.That(controller.GetType(), Is.TypeOf<Controller>());
+    }
+
     [TestCase("1", 1)]
     [TestCase("4", 4)]
     [TestCase("7", 7)]
