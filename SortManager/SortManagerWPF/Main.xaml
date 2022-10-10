@@ -5,31 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SortManagerWPF"
         mc:Ignorable="d"
-        Title="Main" Height="218" Width="351">
+        Title="Main" Height="500" Width="351">
     <Grid>
-        <GroupBox>
+        <StackPanel>
             <StackPanel>
-                <StackPanel>
-                    <Label FontSize="24">Sort Manager GUI</Label>
-                </StackPanel>
-                <StackPanel Margin="0,10,0,0">
-                    <Grid>
-                        <Label HorizontalAlignment="Left">Select Algorithm</Label>
-                        <ComboBox x:Name="algorithmSelectionBox" Width="200" HorizontalAlignment="Right"></ComboBox>
-                    </Grid>
-                </StackPanel>
-                <StackPanel Margin="0,10,0,0">
-                    <Grid>
-                        <Label HorizontalAlignment="Left">Enter Array Size</Label>
-                        <TextBox x:Name="arraySizeBox" TextWrapping="Wrap" Height="22" Width="200" HorizontalAlignment="Right"></TextBox>
-                    </Grid>
-                </StackPanel>
-                <StackPanel Margin="0,10,0,0">
-                    <Grid>
-                        <Button x:Name="sortArrayButton" Height="22" Click="sortArrayButton_Click">Sort Array</Button>
-                    </Grid>
-                </StackPanel>
+                <Label FontSize="24">Sort Manager GUI</Label>
             </StackPanel>
-        </GroupBox>
+            <StackPanel Margin="0,10,5,0">
+                <Grid>
+                    <Label HorizontalAlignment="Left">Select Algorithm</Label>
+                    <ComboBox x:Name="algorithmSelectionBox" Width="200" HorizontalAlignment="Right"></ComboBox>
+                </Grid>
+            </StackPanel>
+            <StackPanel Margin="0,10,5,0">
+                <Grid>
+                    <Label HorizontalAlignment="Left">Enter Array Size</Label>
+                    <TextBox x:Name="arraySizeBox" TextWrapping="Wrap" Height="22" Width="200" HorizontalAlignment="Right" Text="0"></TextBox>
+                </Grid>
+            </StackPanel>
+            <StackPanel Margin="0,10,0,0">
+                <Grid>
+                    <Button HorizontalAlignment="Center" x:Name="sortArrayButton" Height="25" Width="100" Click="sortArrayButton_Click">Sort Array</Button>
+                </Grid>
+            </StackPanel>
+            <StackPanel Margin="0,10,0,0">
+                <Grid>
+                    <Button HorizontalAlignment="Center" x:Name="aboutButton" Height="25" Width="100" Click="aboutButton_Click">About</Button>
+                </Grid>
+            </StackPanel>
+            <StackPanel Margin="0,10,0,0">
+                <Grid>
+                    <Label x:Name="sortDurationLabel" HorizontalAlignment="Center"></Label>
+                </Grid>
+            </StackPanel>
+            <StackPanel Margin="0,10,0,0">
+                <TabControl Height="240">
+                    <TabItem Header="Unsorted">
+                        <RichTextBox x:Name="unsortedArrayTextBox"></RichTextBox>
+                    </TabItem>
+                    <TabItem Header="Sorted">
+                        <RichTextBox x:Name="sortedArrayTextBox"></RichTextBox>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+
+        </StackPanel>
     </Grid>
 </Window>

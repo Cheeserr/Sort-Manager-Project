@@ -15,8 +15,6 @@ public class Controller : SortFactory
         SelectionSort
     }
 
-    // TODO: We need to make this private (Feature creep). Would re
-
     private Profiler profiler = new Profiler();
     public string GetProfilerResult() => profiler.ToString();
 
