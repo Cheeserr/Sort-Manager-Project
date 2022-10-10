@@ -1,6 +1,5 @@
 ﻿using SortManagerController;
 using System;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,7 +12,7 @@ namespace SortManagerWPF
     {
         private void InitAlgorithmComboBox()
         {
-            var algorithmNames = Enum.GetValues(typeof(Controller.Sorts)).Cast<Controller.Sorts>();
+            var algorithmNames = Enum.GetValues(typeof(Controller.Sorts));
             foreach (var algorithm in algorithmNames)
             {
                 algorithmSelectionBox.Items.Add(algorithm);
@@ -38,12 +37,11 @@ namespace SortManagerWPF
             if (arraySize < 0) throw new ArgumentException("arraySize must be a positive number");
 
             Controller controller = new Controller();
-
             controller.MinRange = -1000;
             controller.MinRange = 1000;
 
             controller.ArrayGenerator(arraySize);
-            var unsorted = controller.ArrayToString();
+            var unsorted = controller.ArrayToString(); // capture the random array pre-sort
 
             //TODO: Maybe speak with others about refactoring this to an enum value instead of an int
             controller.SortArray(((int)algorithm));
@@ -55,7 +53,7 @@ namespace SortManagerWPF
 
         private void sortArrayButton_Click(object sender, RoutedEventArgs e)
         {
-            int arraySize = 0;
+            int arraySize;
             if (!int.TryParse(arraySizeBox.Text, out arraySize))
             {
                 MessageBox.Show("Enter a valid number for the array size", "Sort Manager", MessageBoxButton.OK, MessageBoxImage.Error);
