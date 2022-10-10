@@ -59,7 +59,7 @@
 
  Below is an image of the Profiler class in which handles the timing of the sorting algorithms using the Stopwatch constructor:
 
- ![Image](./Stopwatch.png)
+ ![Image](./Screenshots/Stopwatch.png)
 
  ### **Sorting Algorithms:**
 
@@ -77,7 +77,7 @@
 
  Below is an image of how the Merge Sort algorithm works:
 
- ![Image](./MergeSort.png)
+ ![Image](./Screenshots/MergeSort.png)
  
  [Image from GeeksforGeeks](https://www.geeksforgeeks.org/merge-sort/)
 
@@ -99,7 +99,7 @@
 
  Below is a gif of how the Selection Sort algorithm works:
 
- ![Selection Sort Gif](./Selection-Sort-Animation.gif)
+ ![Selection Sort Gif](./Screenshots/Selection-Sort-Animation.gif)
 
   Red is the current minimun. Yellow is sorted and Blue is the current item.
 
@@ -110,7 +110,7 @@
 
  Below is an image of how the Merge Sort algorithm works:
 
- ![Image](./insertionsort.png)
+ ![Image](./Screenshots/insertionsort.png)
  
  [Image from GeeksforGeeks](https://www.geeksforgeeks.org/insertion-sort/)
 
