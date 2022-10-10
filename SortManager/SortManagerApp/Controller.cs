@@ -1,21 +1,29 @@
-﻿using System.Drawing;
-using System.Text;
-using SortManagerModel;
+﻿using System.Text;
 
 namespace SortManagerController;
 
 public class Controller : SortFactory
 {
-    public Profiler profiler = new Profiler();
-    int[] array = { };
-
-    bool descending = false;
-
-    private int _minRange;
-    private int _maxRange;
-    public int minRange
+    public enum Sorts
     {
-        get  => _minRange;
+        BubbleSort,
+        HeapSort,
+        InsertionSort,
+        MergeSort,
+        NetSort,
+        PancakeSort,
+        SelectionSort
+    }
+
+    private Profiler profiler = new Profiler();
+    public string GetProfilerResult() => profiler.ToString();
+
+    int[] _array = { };
+    private int _minRange = 0;
+    private int _maxRange = 100;
+    public int MinRange
+    {
+        get => _minRange;
         set
         {
             if (value < _maxRange)
@@ -24,9 +32,9 @@ public class Controller : SortFactory
             }
         }
     }
-    public int maxRange
+    public int MaxRange
     {
-        get => maxRange;
+        get => _maxRange;
         set
         {
             if (value > _minRange)
@@ -35,58 +43,52 @@ public class Controller : SortFactory
             }
         }
     }
-    
-    public Controller()
-    {
-        minRange = 0;
-        maxRange = 100;
-    }
 
-    public int Parse(string? choice, int minOption, int maxOption)
-    {
-        if (choice is null) return -1;
+    public Controller() { }
 
-        if(Int32.TryParse(choice, out int num))
+    public static int Parse(string? choice)
+    {
+        if (choice is null || choice.Trim() is "") return -1;
+
+        if (Int32.TryParse(choice, out int num))
         {
-            if (num < minOption || num > maxOption)
+            if (num < 1 || num > 7)
                 return -1;
-
+            return num;
         }
-        return num;
+        return -1;
     }
 
-    public void GenerateArray(int arraySize)
-    {
-        array = ArrayGenerator(arraySize);
-    }
 
-    int[] ArrayGenerator(int arraySize)
+    public void ArrayGenerator(int arraySize)
     {
         Random random = new Random();
         int[] output = new int[arraySize];
 
         for (int i = 0; i < arraySize; i++)
         {
-            output[i] = random.Next(minRange, maxRange);
+            output[i] = random.Next(MinRange, MaxRange);
         }
 
-        return output;
+        _array = output;
     }
 
     public void SortArray(int value)
     {
-        array = profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(array));
+        _array = profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(_array));
     }
 
     public string ArrayToString()
     {
         StringBuilder sb = new StringBuilder("");
 
-        foreach(var element in array)
+        foreach (var element in _array)
         {
             sb.Append(element.ToString() + " ");
         }
 
         return sb.ToString().Trim();
     }
+
+
 }
