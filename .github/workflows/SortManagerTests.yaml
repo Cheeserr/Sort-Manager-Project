@@ -26,5 +26,5 @@ jobs:
     - name: coveralls      
       uses: coverallsapp/github-action@v1.1.1
       with:
-      github-token: ${{secrets.GITHUB_TOKEN }} 
-      path-to-lcov: SafariParkTests/lcov.info
+        github-token: ${{secrets.GITHUB_TOKEN }} 
+        path-to-lcov: SortManagerTests/lcov.info
