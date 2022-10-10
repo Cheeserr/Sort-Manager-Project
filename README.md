@@ -1,5 +1,7 @@
 # **Sort Manager Project**
-
+ [![Coverage Status](https://coveralls.io/repos/github/Cheeserr/BestGroupSortManagerProject/badge.svg?branch=main)](https://coveralls.io/github/Cheeserr/BestGroupSortManagerProject?branch=main)
+ [![Unit Testing](https://github.com/Cheeserr/BestGroupSortManagerProject/actions/workflows/SortManagerTests.yaml/badge.svg)](https://github.com/Cheeserr/BestGroupSortManagerProject/actions/workflows/SortManagerTests.yaml)
+ 
  _Participants:_
  - Sergiusz (Scrum Master)
  - Tudor
@@ -14,22 +16,48 @@
 
  This collaborative GitHub project contains an application in which takes a users input for a random array, sorts the given array depending on what sorting algorithm the user picks (via the command line) and then ouputs the time taken to sort the array, the sorted or (potentially) unsorted array and the algorithm that was used to sort the given array.
 
+ # **How the program will work:**
+ 
+ ## **Console View:**
+ The user will be presented with a console menu consisting of all the sorting algorithms avaliable to them numbered. The user will then select a sorting algorithm by inputting a number and press enter to confirm.
+ ![Image](./Screenshots/Console%201.PNG)
+ 
+ The user will then be asked in input an array size to be sorted by the algorithm. 
+ ![Image](./Screenshots/Console%202.PNG)
+
+ The Console will then display the unsorted array and the sorted array, alongside the time it took to sort the array given the sorting algorithm. The user can do another sorting algorithm by pressing any key after the array has been sorted. If the user would like to leave the program then at the main slection menu the user can type enter. Finally, the program will close with a thank you message for using our application.
+
+ ![Image](./Screenshots/Console%203.PNG)
+
+ ## **GUI View:**
+ The user will select the algorithm that they would like to sort their array by from a drop down list provided. Following from this, the user will then enter an integer array size into the input box below. Then, the user will be given a sort button in which they click and the code behind the GUI will create , sort and return the sorted and unsorted arrays back to the GUI within the sorted and unsorted tabs. Finally, the user can exit the GUI by pressing the x button at the top right of the GUI.
+ 
+ ![Image](./Screenshots/gui.png)
+
  # **Key features implemented:**
  
  The main architectual pattern we used was Model View Controller (MVC). In which we have a seperate IO(View) from the Controller and Model and the Factory method pattern to generate the requested Model classes.
 
- Within our program there is implmentation of all four pillars of Object Oriented Programming (OOP). These consist of:
+ Within our program there is implmentation of all four pillars of Object Oriented Programming (OOP) whilst upholding Test Driven Development (TDD). These consist of:
 
  1. Abstraction
  2. Encapsulation
  3. Inheritance
  4. Polymorphism
    
- ### **User Interface:**
+ ### **Graphical User Interface:**
+ The user interface will consist of a simple functional GUI. In which, the user will select the algorithm that they would like to sort their array by from a drop down list provided. Following from this, the user will then enter an integer array size into the input box below. Then, the user will be given a sort button in which they click and the code behind the GUI will create , sort and return the array back to the GUI. The speed of the sort is displayed to the user (in ms) in the same GUI menu with the Unsorted array displayed in a tab below with another tab next to it called Sorted in which shows the sorted array. Finally, the user can exit the GUI by pressing the x button at the top right of the GUI.
 
- (INSERT IMAGE HERE)
+ Below is an image of the simple wireframe of how our GUI would be expected to look like and what the current GUI interface looks like to the user when the program is executed:
+
+ ![Image](./Screenshots/wirefram%20for%20User%20Interface.png)
+
+ ![Image](./Screenshots/gui.png)
 
  ### **Stopwatch:**  
+ Stopwatch was implemented in order to time how fast the user selected sorting algorithm would take to sort the users array.
+
+ Below is an image of the Profiler class in which handles the timing of the sorting algorithms using the Stopwatch constructor:
 
  ![Image](./Stopwatch.png)
 
@@ -40,7 +68,7 @@
 
  Below is an image of how the Bubble Sort algorithm works:
 
- ![Image](./BubbleSort.png)
+ ![Image](./Screenshots/BubbleSort.png)
  
  [Image from ProductPlan](https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.productplan.com%2Fuploads%2Fbubble-sort-1024x683-2.png&imgrefurl=https%3A%2F%2Fwww.productplan.com%2Fglossary%2Fbubble-sort%2F&tbnid=XCt96s7yTuSg1M&vet=12ahUKEwi-3Kbf9M36AhURWxoKHYeoCaMQMygBegUIARDnAQ..i&docid=mviKTR0SNkg67M&w=1024&h=683&q=bubble%20sort&ved=2ahUKEwi-3Kbf9M36AhURWxoKHYeoCaMQMygBegUIARDnAQ)
  
@@ -87,10 +115,22 @@
  [Image from GeeksforGeeks](https://www.geeksforgeeks.org/insertion-sort/)
 
  ### **Heap Sort:**
- Heap sort works by visualizing the elements of the array as a special kind of complete binary tree called a heap.
+ Heap sort works by visualizing the elements of the array as a special kind of complete binary tree called a heap.The heapsort algorithm involves preparing the list by first turning it into a max heap. The algorithm then repeatedly swaps the first value of the list with the last value, decreasing the range of values considered in the heap operation by one, and sifting the new first value into its position in the heap.
  
- ### **Test Driven Development:**
+ Below is an image of how the Heap Sort algorithm works:
+ 
+ ![Image](./Screenshots/heap-sort.png)
 
+ [Image from Alphacodingskills](https://www.alphacodingskills.com/php/pages/php-program-for-heap-sort.php)
+ 
+ ### **Pancake Sort:**
+ The pancake sort works by taking an array and "flipping" it upside down like a stack of pancakes. In order for elements to be placed in the right positions, the "pancake stack" needs to be flipped once so it's bottom side up, and once more. Unlike a traditional sorting algorithm, which attempts to sort with the fewest comparisons possible, the goal is to sort the sequence in as few reversals as possible. The idea is to do something similar to Selection Sort. We one by one place maximum element at the end and reduce the size of current array by one.
+
+ Below is an image of how the Pancake Sort algorithm works:
+ ![Image](./Screenshots/pancake_Sort.png)
+ 
+ [Iameg from Opengenus](https://iq.opengenus.org/pancake-sort/)
+ 
  # Some Challenges faced:
  
  The project as a whole went very smoothly as everyone followed Agile Principles.
