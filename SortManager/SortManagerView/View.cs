@@ -63,20 +63,34 @@ internal class View
         controller.ArrayGenerator(arraySize);
 
         Console.WriteLine("Unsorted array: ");
-        Console.WriteLine(controller.ArrayToString());
+        Console.WriteLine(controller.ShowUnsorted());
 
         controller.SortArray(result);
 
         Console.WriteLine("\nSorted array: ");
-        Console.WriteLine(controller.ArrayToString());
+        Console.WriteLine(controller.ShowSorted());
 
         Console.WriteLine($"\n Time it took: {controller.GetProfilerResult()} \n");
-        Console.WriteLine("\n Press any key do continue...");
+        Console.WriteLine("\n Press Y to compare to others or anything else to continue.");
 
+        var key = Console.ReadKey();
 
-        Console.ReadKey();
+        if(key.Key == ConsoleKey.Y)
+        {
+            Console.WriteLine(controller.TestAll(result));
 
-        CleanUp();
+            Console.WriteLine("\n Press any key do continue...");
+
+            Console.ReadKey();
+
+            CleanUp();
+        }
+        else 
+        { 
+            CleanUp(); 
+        }
+
+        
     }
 
     private static void CleanUp()

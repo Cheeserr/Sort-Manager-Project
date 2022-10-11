@@ -18,6 +18,7 @@ public class Controller : SortFactory
     private Profiler profiler = new Profiler();
     public string GetProfilerResult() => profiler.ToString();
 
+    int[] _unsortedArray = { };
     int[] _array = { };
     private int _minRange = 0;
     private int _maxRange = 100;
@@ -70,19 +71,45 @@ public class Controller : SortFactory
             output[i] = random.Next(MinRange, MaxRange);
         }
 
-        _array = output;
+        _unsortedArray = output;
     }
 
     public void SortArray(int value)
     {
-        _array = profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(_array));
+        _array = profiler.ProfileFunctionInline(() => ChooseSort(value).Sort(_unsortedArray));
     }
 
-    public string ArrayToString()
+    public string TestAll(int value)
+    {
+
+        Console.WriteLine("\n");
+        StringBuilder sb = new StringBuilder("");
+        for(int i = 1; i <= 7; i++)
+        {
+            if(i != value)
+            {
+                profiler.ProfileFunctionInline(() => ChooseSort(i).Sort(_unsortedArray));
+                sb.Append(Enum.GetName(typeof(Sorts), i - 1) + " " +  GetProfilerResult() + "\n");
+            }
+        }
+        return sb.ToString();
+    }
+
+    public string ShowSorted()
+    {
+        return ArrayToString(_array);
+    }
+
+    public string ShowUnsorted()
+    {
+        return ArrayToString(_unsortedArray);
+    }
+
+    public string ArrayToString(int[] array)
     {
         StringBuilder sb = new StringBuilder("");
 
-        foreach (var element in _array)
+        foreach (var element in array)
         {
             sb.Append(element.ToString() + " ");
         }
