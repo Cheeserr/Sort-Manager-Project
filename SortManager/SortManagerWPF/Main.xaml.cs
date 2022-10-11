@@ -41,14 +41,14 @@ namespace SortManagerWPF
             controller.MinRange = 1000;
 
             controller.ArrayGenerator(arraySize);
-            var unsorted = controller.ArrayToString(); // capture the random array pre-sort
+            var unsorted = controller.ShowUnsorted(); // capture the random array pre-sort
 
             //TODO: Maybe speak with others about refactoring this to an enum value instead of an int
             controller.SortArray(((int)algorithm));
 
             sortDurationLabel.Content = $"Sorting took {controller.GetProfilerResult()}";
             ClearAndSetTextBox(unsortedArrayTextBox, unsorted);
-            ClearAndSetTextBox(sortedArrayTextBox, controller.ArrayToString());
+            ClearAndSetTextBox(sortedArrayTextBox, controller.ShowSorted());
         }
 
         private void sortArrayButton_Click(object sender, RoutedEventArgs e)
